@@ -17,5 +17,6 @@ and/or DataPackageR::load_all
 _datasets() to load them.
 }
 \seealso{
-\link{data}
+\link{plot_simulation}
+\link{power}
 }

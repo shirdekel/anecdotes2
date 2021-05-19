@@ -26,6 +26,23 @@ get_plan <- function() {
       },
       target = "file"
     ),
-    materials = get_screenshots(experiment)
+    materials = get_screenshots(experiment),
+    data_simulation = target(
+      get_data_simulation(),
+      ## Seed needed to recreate old target in the experiment generation.
+      ## Generated from `diagnose(data_simulation_anecdotes_2)$seed` in the
+      ## original thesis project.
+      seed = 668838934
+    ),
+    plot_simulation = get_plot_simulation(data_simulation),
+    power_table = target(
+      get_power_table(),
+      ## Seed needed to recreate old target with different name so that the same
+      ## `npv_amount` vector is generated as in the experiment generation.
+      ## Generated from `diagnose(experiment4)$seed` in the original thesis
+      ## project.
+      seed = 1827196820
+    ),
+    power = get_power(power_table)
   )
 }

@@ -9,7 +9,8 @@
 #'     and/or DataPackageR::load_all
 #' _datasets() to load them.
 #' @seealso
-#' \link{data}
+#' \link{plot_simulation}
+#' \link{power}
 NULL
 
 
@@ -97,4 +98,41 @@ NULL
 #' @source The data comes from________________________.
 #' @seealso
 #' \link{anecdotes2}
+NULL
+
+
+
+
+#' Detailed description of the data
+#' @name plot_simulation
+#' @docType data
+#' @title Descriptive data title
+#' @format a \code{list} containing the following fields:
+#' \describe{
+#' \item{negative}{}
+#' \item{positive}{}
+#' }
+#' @source The data comes from________________________.
+#' @seealso
+#' \link{anecdotes2}
+#' \link{power}
+NULL
+
+
+
+
+#' Detailed description of the data
+#' @name power
+#' @docType data
+#' @title Descriptive data title
+#' @format a \code{list} containing the following fields:
+#' \describe{
+#' \item{power_curve}{}
+#' \item{n}{}
+#' \item{n_total}{}
+#' }
+#' @source The data comes from________________________.
+#' @seealso
+#' \link{anecdotes2}
+#' \link{plot_simulation}
 NULL

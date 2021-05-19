@@ -1,0 +1,24 @@
+---
+title: Anecdotes 2 simulation plot.
+author: Shir Dekel
+date: '`r format(Sys.time())`'
+output_format: html_document
+vignette: >
+  %\VignetteIndexEntry{Anecdotes 2 simulation plot.}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+Call `plot_simulation` target
+
+```{r}
+plot_simulation <-
+  drake::readd(
+    plot_simulation,
+    cache = drake::drake_cache(
+      DataPackageR::project_path(".drake")
+    )
+  )
+```
+
+

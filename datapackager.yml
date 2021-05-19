@@ -2,6 +2,13 @@ configuration:
   files:
     data.Rmd:
       enabled: yes
-  objects: data
+    plot_simulation.Rmd:
+      enabled: yes
+    power.Rmd:
+      enabled: yes
+  objects:
+  - data
+  - power
+  - plot_simulation
   render_root:
     tmp: '682999'
