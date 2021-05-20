@@ -7,14 +7,11 @@
 ##' Usually you're using lists of trials, so running `map(flatten)` usually does
 ##' the trick.
 
-##' @param randomize_order
-##'
-##' @param gambles
-##'
+##' @param randomize_order 
 ##' @return
 ##' @author Shir Dekel
 ##' @export
-get_main <- function(gambles, randomize_order = TRUE) {
+get_main <- function(randomize_order = TRUE) {
     instructions <-
         get_instructions_anecdotes_2()
 

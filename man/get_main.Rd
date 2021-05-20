@@ -11,11 +11,9 @@ conditional timeline or has variables), then it should be a timeline list.
 Usually you're using lists of trials, so running \code{map(flatten)} usually does
 the trick.}
 \usage{
-get_main(gambles, randomize_order = TRUE)
+get_main(randomize_order = TRUE)
 }
 \arguments{
-\item{gambles}{}
-
 \item{randomize_order}{}
 }
 \value{
