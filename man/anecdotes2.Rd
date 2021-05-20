@@ -4,13 +4,13 @@
 \name{anecdotes2}
 \alias{anecdotes2}
 \alias{anecdotes2-package}
-\title{Package Title}
+\title{Anecdotes 2 experiment}
 \description{
-A description of the data package
+Data, materials, and experiment code for the Anecdotes 2 experiment.
 }
 \details{
 anecdotes2
-A data package for anecdotes2.
+A data package for the Anecdotes 2 experiment.
 
 Use \code{data(package='anecdotes2')$results[, 3]} to see a list of available data sets in this data package
 and/or DataPackageR::load_all
