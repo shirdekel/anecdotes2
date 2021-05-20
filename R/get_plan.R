@@ -26,7 +26,24 @@ get_plan <- function() {
       },
       target = "file"
     ),
-    materials = get_screenshots(experiment),
+    main_testing = get_main(randomize_order = FALSE),
+    experiment_testing = target(
+      {
+        shirthesis::get_experiment(
+          experiment_directory = file.path("inst", "jspsych", "testing"),
+          experiment_resources,
+          main_testing,
+          post_experiment = get_post_experiment(),
+          columns = get_columns(),
+          condition_allocation = get_condition_allocation(),
+          ethics = FALSE,
+          on_finish = NULL
+        )
+        file.path("inst", "jspsych", "testing", "experiment")
+      },
+      target = "file"
+    ),
+    materials = get_screenshots(experiment_testing),
     data_simulation = target(
       get_data_simulation(),
       ## Seed needed to recreate old target in the experiment generation.
