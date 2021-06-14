@@ -16,6 +16,7 @@ NULL
 
 
 
+
 #' Detailed description of the data
 #' @name data
 #' @docType data
@@ -103,6 +104,7 @@ NULL
 
 
 
+
 #' Detailed description of the data
 #' @name plot_simulation
 #' @docType data
@@ -117,6 +119,7 @@ NULL
 #' \link{anecdotes2}
 #' \link{power}
 NULL
+
 
 
 
