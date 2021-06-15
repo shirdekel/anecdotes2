@@ -146,6 +146,10 @@ data <-
     test_name = instructions_test,
     test_answer = "5"
   ) %>%
+  select(-c(
+    prolific, contact, address, company_name, PROLIFIC_PID, STUDY_ID,
+    SESSION_ID
+  )) %>%
   mutate(
     across(anecdote_within, recode, `statistics-only` = "statistics_only"),
     across(c(valence, similarity), na_if, "NA")
@@ -158,6 +162,13 @@ data <-
   rowwise() %>%
   mutate(across(statistics_only, pull, allocation)) %>%
   unnest(cols = anecdote) %>%
-  mutate(allocation_difference = statistics_only - allocation)
+  select(id, similarity, valence, statistics_only, allocation) %>%
+  mutate(
+    statistics_only = case_when(
+      valence == "positive" ~ 100 - statistics_only,
+      TRUE ~ statistics_only
+    ),
+    allocation_difference = statistics_only - allocation
+  )
 ```
 

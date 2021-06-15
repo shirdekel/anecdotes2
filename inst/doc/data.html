@@ -166,51 +166,16 @@ pre code {
 
 <h1 class="title toc-ignore">Clean anecdotes 2 data</h1>
 <h4 class="author">Shir Dekel</h4>
-<h4 class="date">2021-06-14 19:49:13</h4>
+<h4 class="date">2021-06-15 10:54:16</h4>
 
 </div>
 
 
 <p>Load packages and functions</p>
 <pre class="r"><code>source(DataPackageR::project_path(&quot;packages.R&quot;))</code></pre>
-<pre><code>## • {drake} is superseded: https://books.ropensci.org/targets/drake.html
-## • Consider {targets} instead: https://docs.ropensci.org/targets/
-## • Effective 2021-01-21</code></pre>
-<pre><code>## Loading required package: abind</code></pre>
-<pre><code>## 
-## ************
-## Welcome to faux. For support and examples visit:
-## http://debruine.github.io/faux/
-## - Get and set global package options with: faux_options()
-## ************</code></pre>
-<pre><code>## Loading required package: tinylabels</code></pre>
-<pre><code>## Loading required package: lme4</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## 
-## Attaching package: &#39;Matrix&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:tidyr&#39;:
-## 
-##     expand, pack, unpack</code></pre>
-<pre><code>## The following object is masked from &#39;package:drake&#39;:
-## 
-##     expand</code></pre>
-<pre><code>## Registered S3 methods overwritten by &#39;car&#39;:
-##   method                          from
-##   influence.merMod                lme4
-##   cooks.distance.influence.merMod lme4
-##   dfbeta.influence.merMod         lme4
-##   dfbetas.influence.merMod        lme4</code></pre>
-<pre><code>## ************
-## Welcome to afex. For support visit: http://afex.singmann.science/</code></pre>
-<pre><code>## - Functions for ANOVAs: aov_car(), aov_ez(), and aov_4()
-## - Methods for calculating p-values with mixed(): &#39;KR&#39;, &#39;S&#39;, &#39;LRT&#39;, and &#39;PB&#39;
-## - &#39;afex_aov&#39; and &#39;mixed&#39; objects can be passed to emmeans() for follow-up tests
-## - NEWS: library(&#39;emmeans&#39;) now needs to be called explicitly!
-## - Get and set global package options with: afex_options()
-## - Set orthogonal sum-to-zero contrasts globally: set_sum_contrasts()
-## - For example analyses see: browseVignettes(&quot;afex&quot;)
-## ************</code></pre>
+<pre><code>## [conflicted] Removing existing preference</code></pre>
 <pre><code>## [conflicted] Will prefer dplyr::filter over any other package</code></pre>
+<pre><code>## [conflicted] Removing existing preference</code></pre>
 <pre><code>## [conflicted] Will prefer purrr::flatten over any other package</code></pre>
 <pre class="r"><code>project_path(&quot;R&quot;) %&gt;%
   list.files(full.names = TRUE) %&gt;%
@@ -4633,6 +4598,10 @@ data &lt;-
     test_name = instructions_test,
     test_answer = &quot;5&quot;
   ) %&gt;%
+  select(-c(
+    prolific, contact, address, company_name, PROLIFIC_PID, STUDY_ID,
+    SESSION_ID
+  )) %&gt;%
   mutate(
     across(anecdote_within, recode, `statistics-only` = &quot;statistics_only&quot;),
     across(c(valence, similarity), na_if, &quot;NA&quot;)
@@ -4645,7 +4614,14 @@ data &lt;-
   rowwise() %&gt;%
   mutate(across(statistics_only, pull, allocation)) %&gt;%
   unnest(cols = anecdote) %&gt;%
-  mutate(allocation_difference = statistics_only - allocation)</code></pre>
+  select(id, similarity, valence, statistics_only, allocation) %&gt;%
+  mutate(
+    statistics_only = case_when(
+      valence == &quot;positive&quot; ~ 100 - statistics_only,
+      TRUE ~ statistics_only
+    ),
+    allocation_difference = statistics_only - allocation
+  )</code></pre>
 
 
 
