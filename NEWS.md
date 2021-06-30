@@ -1,3 +1,8 @@
+DataVersion: 0.1.5
+=======================
+* Changed: plot_simulation
+Fix legend
+
 DataVersion: 0.1.4
 =======================
 * Changed: data
