@@ -15,9 +15,19 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 DataVersion: 0.1.5
 Date: 2021-06-30
+Date: 2021-07-12
 Suggests: 
     knitr,
     rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/shirdekel/anecdotes2
 BugReports: https://github.com/shirdekel/anecdotes2/issues
+Imports: 
+    ggplot2,
+    afex,
+    papaja,
+    scales,
+    dplyr,
+    forcats,
+    tibble,
+    magrittr
