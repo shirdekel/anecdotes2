@@ -175,7 +175,7 @@ data <-
       valence == "positive" ~ 100 - statistics_only,
       TRUE ~ statistics_only
     ),
-    allocation_difference = statistics_only - allocation,
+    allocation_difference = statistics_only_inverse - allocation,
     allocation_difference_inverse = case_when(
       valence == "positive" ~ allocation_difference * -1,
       TRUE ~ allocation_difference

@@ -1,3 +1,9 @@
+DataVersion: 0.1.8
+=======================
+* Changed: plot_simulation
+* Changed: power
+Fix allocation difference measure
+
 DataVersion: 0.1.7
 =======================
 Add DV transformations

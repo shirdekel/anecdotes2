@@ -360,13 +360,17 @@ pre code {
 
 <h1 class="title toc-ignore">Clean anecdotes 2 data</h1>
 <h4 class="author">Shir Dekel</h4>
-<h4 class="date">2022-02-02 18:38:13</h4>
+<h4 class="date">2022-02-03 10:18:11</h4>
 
 </div>
 
 
 <p>Load packages and functions</p>
 <pre class="r"><code>source(DataPackageR::project_path(&quot;packages.R&quot;))</code></pre>
+<pre><code>## • {drake} is superseded: https://books.ropensci.org/targets/drake.html
+## • Consider {targets} instead: https://docs.ropensci.org/targets/
+## • Effective 2021-01-21</code></pre>
+<pre><code>## Loading required package: abind</code></pre>
 <pre><code>## 
 ## ************
 ## Welcome to faux. For support and examples visit:
@@ -5115,7 +5119,7 @@ data &lt;-
       valence == &quot;positive&quot; ~ 100 - statistics_only,
       TRUE ~ statistics_only
     ),
-    allocation_difference = statistics_only - allocation,
+    allocation_difference = statistics_only_inverse - allocation,
     allocation_difference_inverse = case_when(
       valence == &quot;positive&quot; ~ allocation_difference * -1,
       TRUE ~ allocation_difference
